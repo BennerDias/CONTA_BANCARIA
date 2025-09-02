@@ -2,34 +2,12 @@ import { ContaPoupanca } from './../src/Model/ContaPoupanca';
 import { ContaCorrente } from './../src/Model/ContaCorrente';
 import { Colors } from './../src/util/Colors/Colors';
 import * as leia from 'readline-sync';
-import { Conta } from '../src/Model/Conta';
 
 // numero, agencia, tipo, titular, saldo
 
 export function main() {
 
     let opcao: number;
-
-    const conta: Conta = new Conta(1, 123, 1, "Benner", 10000);
-    conta.visualizar();
-    conta.sacar(10500);
-    conta.visualizar();
-    conta.depositar(5000);
-    conta.visualizar();
-
-    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Dominik", 15000, 1000);
-    contacorrente.visualizar();
-    contacorrente.sacar(2000);
-    contacorrente.visualizar();
-    contacorrente.depositar(1000);
-    contacorrente.visualizar();
-
-    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, 'Lorenzo', 1000, 24);
-    contapoupanca.visualizar();
-    contapoupanca.sacar(200);
-    contapoupanca.visualizar();
-    contapoupanca.depositar(1000);
-    contapoupanca.visualizar();
 
     while (true) {
 
@@ -61,6 +39,7 @@ export function main() {
             console.log(Colors.fg.greenstrong, "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
             console.log(Colors.reset, "");
+            process.exit(0);
         }
 
         switch (opcao) {
