@@ -9,16 +9,16 @@ export class ContaPoupanca extends Conta{
         this._aniversario = aniversario;
     }
 
-    public get aniversario(){
+    get aniversario(){
         return this._aniversario
     }
-    public set aniversario(aniversario:number){
+    set aniversario(aniversario:number){
         this._aniversario = aniversario;
     }
 
    
 
-    public visualizar(): void{
+    visualizar(): void{
         super.visualizar();
         console.log(`Dia do aniversário: ${this._aniversario}`)
     }

@@ -28,22 +28,25 @@ export abstract class Conta{
 
     public set agencia(agencia: number){
         this._agencia = agencia;
-
-    }public get tipo(){
+    }
+    
+    public get tipo(){
         return this._tipo;
     }
 
     public set tipo(tipo: number){
         this._tipo = tipo;
-
-    }public get titular(){
+    }
+    
+    public get titular(){
         return this._titular;
     }
 
     public set titular(titular: string){
         this._titular = titular;
-
-    }public get saldo(){
+    }
+    
+    public get saldo(){
         return this._saldo;
     }
 

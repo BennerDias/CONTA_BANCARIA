@@ -9,14 +9,14 @@ export class ContaCorrente extends Conta{
         this._limite = limite;
     }
 
-    public get limite(){
+    get limite(){
         return this._limite
     }
-    public set limite(limite:number){
+    set limite(limite:number){
         this._limite = limite;
     }
 
-    public sacar(valor:number): boolean {
+    sacar(valor:number): boolean {
         if((this.saldo + this._limite) < valor){
             console.log('\n Saldo Insuficiente!')
             return false;
@@ -26,7 +26,7 @@ export class ContaCorrente extends Conta{
         return true;
     }
 
-    public visualizar(): void{
+    visualizar(): void{
         super.visualizar();
         console.log(`Limite: ${this._limite.toFixed(2)}`)
     }
