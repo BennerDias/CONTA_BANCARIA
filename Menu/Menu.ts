@@ -11,7 +11,7 @@ export function main() {
     let contas: ContaController = new ContaController();
 
     // Variáveis Auxiliares
-    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+    let opcao, numero, agencia, tipo, saldo, limite, aniversario, valor, numeroDestino: number;
     let titular: string;
     const tiposContas = ['Conta Corrente', 'Conta Poupança']
 
@@ -150,15 +150,37 @@ export function main() {
             case 6:
                 console.log(Colors.fg.whitestrong, "\n\nSaque\n\n", Colors.reset);
 
+                numero = leia.questionInt('Qual o numero da conta que você deseja sacar? ')
+
+                valor = leia.questionFloat('Digite o valor do saque: ')
+
+                contas.sacar(numero, valor)
+
+
                 keyPress()
                 break;
             case 7:
                 console.log(Colors.fg.whitestrong, "\n\nDepósito\n\n", Colors.reset);
 
+                numero = leia.questionInt('Qual o numero da conta que você deseja depositar? ')
+
+
+                valor = leia.questionFloat('Digite o valor do depósito: ')
+
+                contas.depositar(numero, valor)
+
                 keyPress()
                 break;
             case 8:
                 console.log(Colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n", Colors.reset);
+
+                numero = leia.questionInt('Qual o numero da conta de origem? ')
+
+                numeroDestino = leia.questionInt('Qual o numero da conta que receberá a transferência? ')
+                
+                valor = leia.questionFloat('Qual valor você deseja transferir? (R$) ')
+
+                contas.transferir(numero, numeroDestino, valor)
 
                 keyPress()
                 break;

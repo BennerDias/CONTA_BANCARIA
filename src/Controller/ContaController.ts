@@ -49,15 +49,50 @@ export class ContaController implements ContaRepository{
 
 
     sacar(numero: number, valor: number): void {
-        
+        let conta = this.buscarNoArray(numero);
+
+        if(conta != null){
+
+            if(conta.sacar(valor) == true)
+            console.log(Colors.fg.green, `\nO Saque na conta numero: ${numero} foi efetuado com sucesso`, Colors.reset);
+        } else {
+            console.log(Colors.fg.red, `\nA Conta numero: ${numero} não foi encontrada!`, Colors.reset);
+        }
     }
 
     depositar(numero: number, valor: number): void {
-        
+        let conta = this.buscarNoArray(numero);
+
+         if(conta != null){
+            conta.depositar(valor)
+            console.log(Colors.fg.green, `\nO Saque na conta numero: ${numero} foi efetuado com sucesso`, Colors.reset);
+        } else {
+            console.log(Colors.fg.red, `\nA conta ${numero} não foi localizada.`)
+        }
     }
 
-    transferir(numerOrigem: number, numeroDestino: number, valor: number): void {
-        
+    transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
+        let contaOrigem = this.buscarNoArray(numeroOrigem);
+        let contaDestino = this.buscarNoArray(numeroDestino);
+
+        //                                  VOZES DA MINHA CABEÇA 
+        // Qual a conta de origem? qual o valor a ser transferido? Qual a conta destino? 
+        // saldo suficiente na conta origem ? saldo -= valor // SaldoContaDestino += valor : Saldo insuficiente para transferência.
+
+        if(contaOrigem === null){
+            console.log(Colors.fg.red, `Confira a conta de origem, o numero deve ser válido para realizar uma transferência`, Colors.reset)
+        } else if (contaDestino === null) {
+          console.log(Colors.fg.red, `Confira a conta de destino, o numero deve ser válido para realizar uma transferência`, Colors.reset)
+        } else {
+            if(contaOrigem.saldo > valor ){
+            contaOrigem.saldo -= valor;
+            contaDestino.saldo += valor;
+            console.log(Colors.fg.green, `Transferência realizada com sucesso...`)
+           // console.log(Colors.fg.green, `Transferência realizada com sucesso... \n${contaDestino.visualizar()}`, Colors.reset) // DESNECESSÁRIO MAS QUERO SABER COMO FAZER.
+            } else {
+                console.log(Colors.fg.red, `Saldo insuficiente para realizar a transferencia...`)
+            }
+        }
     }
 
         
